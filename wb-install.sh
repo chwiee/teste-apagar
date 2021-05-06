@@ -14,11 +14,11 @@ setup () {
   "
 
   printf "%-80s" "Fast mirror"
-  sudo pacman-mirrors --geoip &>/dev/null
+  sudo pacman-mirrors --geoip 
   check $?
 
   printf "%-80s" "Update system"
-  sudo pacman -Syyu --noconfirm &>/dev/null
+  sudo pacman -Syyu --noconfirm 
   check $?
 
 }
@@ -48,13 +48,13 @@ install_pac () {
   for APP in ${APPS[@]}; do
     if [[ $(pacman -Qs $APP | grep Nome | wc -l) -eq 0 ]]; then
       printf "%-80s" "Install - $APP"
-      pacman -S $APP --noconfirm &>/dev/null
+      pacman -S $APP --noconfirm 
       check $?
     fi
   done
 
   printf "%-80s" "Install - Oh my zsh"
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
   check $?
 
 
@@ -75,7 +75,7 @@ install_yay () {
 
   for Y in ${YAY[@]}; do
     printf "%-80s" "Install - $Y"
-    yay -S $Y --noconfirm &>/dev/null
+    yay -S $Y --noconfirm 
     check $?
   done
 
@@ -84,15 +84,15 @@ install_yay () {
 install_plugins () {
 
   printf "%-80s" "Install - zsh-syntax-highlighting"
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting &>/dev/null
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 
   check $?
 
   printf "%-80s" "Install - zsh-autosuggestions"
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions &>/dev/null
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
   check $?
 
   printf "%-80s" "Install - Power Level 10k"
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k &>/dev/null
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k 
   check $?
 
 }
@@ -104,27 +104,27 @@ configuraterc () {
   "
 
   printf "%-80s" "Set alacritty"
-  cp -r ./configs/alacritty ~/.config/alacritty &>/dev/null
+  cp -r ./configs/alacritty ~/.config/alacritty 
   check $?
 
   printf "%-80s" "Set i3 conf"
-    cp -r ./configs/i3-conf ~/.i3/config &>/dev/null
+    cp -r ./configs/i3-conf ~/.i3/config 
     check $?
 
   printf "%-80s" "Set i3 status config"
-    cp -r ./configs/i3status.conf /etc/i3status.conf &>/dev/null
+    cp -r ./configs/i3status.conf /etc/i3status.conf 
     check $?
 
   printf "%-80s" "Set picom conf"
-    cp -r ./configs/picom.conf ~/.config/picom.conf &>/dev/null
+    cp -r ./configs/picom.conf ~/.config/picom.conf 
     check $?
 
   printf "%-80s" "Set zshrc"
-    cp -r ./configs/zshrc ~/.zshrc &>/dev/null
+    cp -r ./configs/zshrc ~/.zshrc 
     check $?
 
   printf "%-80s" "Set aliasrc"
-  cp -r ./configs/aliasrc ~/.config/aliasrc &>/dev/null
+  cp -r ./configs/aliasrc ~/.config/aliasrc 
   check $?
 
 }
@@ -152,7 +152,7 @@ create_folder () {
 
   for PASTA in ${PASTAS[@]}; do
     printf "%-80s" "Create $PASTA"
-    mkdir -p ~/$PASTA &>/dev/null
+    mkdir -p ~/$PASTA 
     check $?
   done
 
