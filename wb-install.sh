@@ -43,20 +43,28 @@ install_pac () {
     feh
     git
     zsh
+    python-pywal
   )
 
   for APP in ${APPS[@]}; do
     if [[ $(pacman -Qs $APP | grep Nome | wc -l) -eq 0 ]]; then
-      printf "%-80s" "Install - $APP"
-      pacman -S $APP --noconfirm 
+      printf "
+      %-80s" "Install - $APP
+
+
+
+      "
+      sudo pacman -S $APP --noconfirm 
       check $?
     fi
   done
 
-  printf "%-80s" "Install - Oh my zsh"
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
-  check $?
+  printf "%-80s" "
+  Install - Oh my zsh
 
+  "
+  n | sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
+  check $?
 
 }
 
@@ -74,7 +82,13 @@ install_yay () {
   )
 
   for Y in ${YAY[@]}; do
-    printf "%-80s" "Install - $Y"
+    printf "
+    %-80s" "Install - $Y
+
+
+
+    
+    "
     yay -S $Y --noconfirm 
     check $?
   done
@@ -83,15 +97,27 @@ install_yay () {
 
 install_plugins () {
 
-  printf "%-80s" "Install - zsh-syntax-highlighting"
+  printf "%-80s" "Install - zsh-syntax-highlighting
+  
+  
+  
+  "
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting 
   check $?
 
-  printf "%-80s" "Install - zsh-autosuggestions"
+  printf "%-80s" "Install - zsh-autosuggestions
+  
+  
+  
+  "
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
   check $?
 
-  printf "%-80s" "Install - Power Level 10k"
+  printf "%-80s" "Install - Power Level 10k
+  
+  
+  
+  "
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k 
   check $?
 
@@ -103,28 +129,52 @@ configuraterc () {
   ~ * Configurations Stage :
   "
 
-  printf "%-80s" "Set alacritty"
-  cp -r ./configs/alacritty ~/.config/alacritty 
+  printf "%-80s" "Set alacritty
+  
+  
+  
+  "
+  sudo cp -r ./configs/alacritty ~/.config/alacritty 
   check $?
 
-  printf "%-80s" "Set i3 conf"
-    cp -r ./configs/i3-conf ~/.i3/config 
-    check $?
+  printf "%-80s" "Set i3 conf
+  
+  
+  
+  "
+  sudo cp -r ./configs/i3-config ~/.i3/config 
+  check $?
 
-  printf "%-80s" "Set i3 status config"
-    cp -r ./configs/i3status.conf /etc/i3status.conf 
-    check $?
+  printf "%-80s" "Set i3 status config
+  
+  
+  
+  "
+  sudo cp -r ./configs/i3status.conf /etc/i3status.conf 
+  check $?
 
-  printf "%-80s" "Set picom conf"
-    cp -r ./configs/picom.conf ~/.config/picom.conf 
-    check $?
+  printf "%-80s" "Set picom conf
+  
+  
+  
+  "
+  sudo cp -r ./configs/picom.conf ~/.config/picom.conf 
+  check $?
 
-  printf "%-80s" "Set zshrc"
-    cp -r ./configs/zshrc ~/.zshrc 
-    check $?
+  printf "%-80s" "Set zshrc
+  
+  
+  
+  "
+  sudo cp -r ./configs/zshrc ~/.zshrc 
+  check $?
 
-  printf "%-80s" "Set aliasrc"
-  cp -r ./configs/aliasrc ~/.config/aliasrc 
+  printf "%-80s" "Set aliasrc
+  
+  
+  
+  "
+  sudo cp -r ./configs/aliasrc ~/.config/aliasrc 
   check $?
 
 }
@@ -151,7 +201,11 @@ create_folder () {
   )
 
   for PASTA in ${PASTAS[@]}; do
-    printf "%-80s" "Create $PASTA"
+    printf "%-80s" "Create $PASTA
+    
+    
+    
+    "
     mkdir -p ~/$PASTA 
     check $?
   done
@@ -168,11 +222,6 @@ echo "
 Some processes may take a few minutes please waiting...
 
 "
-
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root 'sudo'"
-  exit
-fi
 
 setup
 
