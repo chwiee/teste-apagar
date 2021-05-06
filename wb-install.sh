@@ -104,27 +104,27 @@ configuraterc () {
   "
 
   printf "%-80s" "Set alacritty"
-  cp -r ./config/alacritty ~/.config/alacritty &>/dev/null
+  cp -r ./configs/alacritty ~/.config/alacritty &>/dev/null
   check $?
 
   printf "%-80s" "Set i3 conf"
-    cp -r ./config/i3-conf ~/.i3/config &>/dev/null
+    cp -r ./configs/i3-conf ~/.i3/config &>/dev/null
     check $?
 
   printf "%-80s" "Set i3 status config"
-    cp -r ./config/i3status.conf /etc/i3status.conf &>/dev/null
+    cp -r ./configs/i3status.conf /etc/i3status.conf &>/dev/null
     check $?
 
   printf "%-80s" "Set picom conf"
-    cp -r ./config/picom.conf ~/.config/picom.conf &>/dev/null
+    cp -r ./configs/picom.conf ~/.config/picom.conf &>/dev/null
     check $?
 
   printf "%-80s" "Set zshrc"
-    cp -r ./config/zshrc ~/.zshrc &>/dev/null
+    cp -r ./configs/zshrc ~/.zshrc &>/dev/null
     check $?
 
   printf "%-80s" "Set aliasrc"
-  cp -r ./config/aliasrc ~/.config/aliasrc &>/dev/null
+  cp -r ./configs/aliasrc ~/.config/aliasrc &>/dev/null
   check $?
 
 }
