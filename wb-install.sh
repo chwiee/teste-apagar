@@ -106,7 +106,8 @@ configuraterc () {
   "
 
   printf "%-80s" "Set alacritty"
-  sudo cp -r ./configs/alacritty ~/.config/alacritty &>/dev/null
+  mkdir ~/.config/alacritty
+  sudo cp -r ./configs/alacritty.yml ~/.config/alacritty/alacritty.yml &>/dev/null
   check $?
 
   printf "%-80s" "Set i3 conf"
