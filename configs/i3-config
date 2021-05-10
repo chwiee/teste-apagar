@@ -35,13 +35,16 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pacman-tray
 exec --no-startup-id clipit
+
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-
 exec_always picom -b
 exec_always wal -i ~/wallpapers -o wal-set
+
 # exec --no-startup-id blueman-applet
 # exec --no-startup-id xautolock -time 10 -locker blurlock
+# For VM Resolution
+exec_always xrandr --output Virtual1 --primary --mode 2560x984 --pos 0x0 --rotate normal
 
 ##########################################################################
 ## ~* Binds
