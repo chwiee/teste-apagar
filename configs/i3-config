@@ -17,7 +17,8 @@ set $hibernate sudo -A systemctl suspend
 ## ~* Fonts
 ##########################################################################
 
-font pango:Fira Code 13
+font xft:URWGothic-Book 13
+#font pango:Fira Code 13
 
 ##########################################################################
 ## ~* Startup applications
