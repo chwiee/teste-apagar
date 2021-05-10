@@ -13,11 +13,11 @@ setup () {
   "
 
   printf "%-80s" "Fast mirror"
-  1 | sudo pacman-mirrors --geoip &>/dev/null
+  sudo pacman-mirrors --geoip &>/dev/null
   check $?
 
   printf "%-80s" "Update system"
-  1 | sudo pacman -Syyu --noconfirm &>/dev/null
+  sudo pacman -Syyu --noconfirm &>/dev/null
   check $?
 
 }
@@ -54,7 +54,7 @@ install_pac () {
   done
 
   printf "%-80s" "Install - Oh my zsh"
-  yes | sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   check $?
 
 }
