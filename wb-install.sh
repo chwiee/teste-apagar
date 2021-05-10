@@ -56,7 +56,7 @@ install_pac () {
   done
 
   printf "%-80s" "Install - Oh my zsh"
-  n | sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
   check $?
 
 }
@@ -158,7 +158,10 @@ create_folder () {
     mkdir -p ~/$PASTA &>/dev/null
     check $?
   done
-
+  
+  printf "%-80S" "Create wallpapers"
+  cp -r ./wallpapers ~/
+  check $?
 }
 
 clear
