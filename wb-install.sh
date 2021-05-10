@@ -8,17 +8,16 @@ check () {
 }
 
 setup () {
-
   echo " 
   ~ * Setup the fast mirror and update system :
   "
 
   printf "%-80s" "Fast mirror"
-  sudo pacman-mirrors --geoip &>/dev/null
+  1 2>/dev/null | sudo pacman-mirrors --geoip &>/dev/null
   check $?
 
   printf "%-80s" "Update system"
-  sudo pacman -Syyu --noconfirm &>/dev/null
+  1 2>/dev/null | sudo pacman -Syyu --noconfirm &>/dev/null
   check $?
 
 }
@@ -48,15 +47,14 @@ install_pac () {
 
   for APP in ${APPS[@]}; do
     if [[ $(pacman -Qs $APP | grep Nome | wc -l) -eq 0 ]]; then
-      printf "
-      %-80s" "Install - $APP"
-      sudo pacman -S $APP --noconfirm &>/dev/null
+      printf "%-80s" "Install - $APP"
+      1 2>/dev/null | sudo pacman -S $APP --noconfirm &>/dev/null
       check $?
     fi
   done
 
   printf "%-80s" "Install - Oh my zsh"
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
+  yes 2>/dev/null | sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
   check $?
 
 }
@@ -75,8 +73,7 @@ install_yay () {
   )
 
   for Y in ${YAY[@]}; do
-    printf "
-    %-80s" "Install - $Y"
+    printf "%-80s" "Install - $Y"
     yay -S $Y --noconfirm &>/dev/null
     check $?
   done
@@ -84,6 +81,10 @@ install_yay () {
 }
 
 install_plugins () {
+
+  echo "
+  ~ * Installing Plugins
+  "
 
   printf "%-80s" "Install - zsh-syntax-highlighting"
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting &>/dev/null
@@ -107,27 +108,27 @@ configuraterc () {
 
   printf "%-80s" "Set alacritty"
   mkdir ~/.config/alacritty
-  sudo cp -r ./configs/alacritty.yml ~/.config/alacritty/alacritty.yml &>/dev/null
+  1 2>/dev/null | sudo cp -r ./configs/alacritty.yml ~/.config/alacritty/alacritty.yml &>/dev/null
   check $?
 
   printf "%-80s" "Set i3 conf"
-  sudo cp -r ./configs/i3-config ~/.i3/config &>/dev/null
+  1 2>/dev/null | sudo cp -r ./configs/i3-config ~/.i3/config &>/dev/null
   check $?
 
   printf "%-80s" "Set i3 status config"
-  sudo cp -r ./configs/i3status.conf /etc/i3status.conf &>/dev/null
+  1 2>/dev/null | sudo cp -r ./configs/i3status.conf /etc/i3status.conf &>/dev/null
   check $?
 
   printf "%-80s" "Set picom conf"
-  sudo cp -r ./configs/picom.conf ~/.config/picom.conf &>/dev/null
+  1 2>/dev/null | sudo cp -r ./configs/picom.conf ~/.config/picom.conf &>/dev/null
   check $?
 
   printf "%-80s" "Set zshrc"
-  sudo cp -r ./configs/zshrc ~/.zshrc &>/dev/null
+  1 2>/dev/null | sudo cp -r ./configs/zshrc ~/.zshrc &>/dev/null
   check $?
 
   printf "%-80s" "Set aliasrc"
-  sudo cp -r ./configs/aliasrc ~/.config/aliasrc &>/dev/null
+  1 2>/dev/null | sudo cp -r ./configs/aliasrc ~/.config/aliasrc &>/dev/null
   check $?
 
 }
@@ -184,3 +185,5 @@ install_yay
 install_plugins
 
 configuraterc
+
+create_folder
