@@ -38,7 +38,7 @@ exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
-exec_always killall picom && sleep 1 && picom -b
+exec_always picom -b
 exec_always wal -i ~/wallpapers -o wal-set
 # exec --no-startup-id blueman-applet
 # exec --no-startup-id xautolock -time 10 -locker blurlock
