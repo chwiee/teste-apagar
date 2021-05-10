@@ -13,11 +13,11 @@ setup () {
   "
 
   printf "%-80s" "Fast mirror"
-  1 2>/dev/null | sudo pacman-mirrors --geoip &>/dev/null
+  1 | sudo pacman-mirrors --geoip &>/dev/null
   check $?
 
   printf "%-80s" "Update system"
-  1 2>/dev/null | sudo pacman -Syyu --noconfirm &>/dev/null
+  1 | sudo pacman -Syyu --noconfirm &>/dev/null
   check $?
 
 }
@@ -48,13 +48,13 @@ install_pac () {
   for APP in ${APPS[@]}; do
     if [[ $(pacman -Qs $APP | grep Nome | wc -l) -eq 0 ]]; then
       printf "%-80s" "Install - $APP"
-      1 2>/dev/null | sudo pacman -S $APP --noconfirm &>/dev/null
+      sudo pacman -S $APP --noconfirm &>/dev/null
       check $?
     fi
   done
 
   printf "%-80s" "Install - Oh my zsh"
-  yes 2>/dev/null | sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
+  yes | sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
   check $?
 
 }
@@ -108,27 +108,27 @@ configuraterc () {
 
   printf "%-80s" "Set alacritty"
   mkdir ~/.config/alacritty
-  1 2>/dev/null | sudo cp -r ./configs/alacritty.yml ~/.config/alacritty/alacritty.yml &>/dev/null
+  sudo cp -r ./configs/alacritty.yml ~/.config/alacritty/alacritty.yml &>/dev/null
   check $?
 
   printf "%-80s" "Set i3 conf"
-  1 2>/dev/null | sudo cp -r ./configs/i3-config ~/.i3/config &>/dev/null
+  sudo cp -r ./configs/i3-config ~/.i3/config &>/dev/null
   check $?
 
   printf "%-80s" "Set i3 status config"
-  1 2>/dev/null | sudo cp -r ./configs/i3status.conf /etc/i3status.conf &>/dev/null
+  sudo cp -r ./configs/i3status.conf /etc/i3status.conf &>/dev/null
   check $?
 
   printf "%-80s" "Set picom conf"
-  1 2>/dev/null | sudo cp -r ./configs/picom.conf ~/.config/picom.conf &>/dev/null
+  sudo cp -r ./configs/picom.conf ~/.config/picom.conf &>/dev/null
   check $?
 
   printf "%-80s" "Set zshrc"
-  1 2>/dev/null | sudo cp -r ./configs/zshrc ~/.zshrc &>/dev/null
+  sudo cp -r ./configs/zshrc ~/.zshrc &>/dev/null
   check $?
 
   printf "%-80s" "Set aliasrc"
-  1 2>/dev/null | sudo cp -r ./configs/aliasrc ~/.config/aliasrc &>/dev/null
+  sudo cp -r ./configs/aliasrc ~/.config/aliasrc &>/dev/null
   check $?
 
 }
@@ -156,7 +156,7 @@ create_folder () {
 
   for PASTA in ${PASTAS[@]}; do
     printf "%-80s" "Create $PASTA"
-    mkdir -p ~/$PASTA &>/dev/null
+    mkdir -p ~/wb/$PASTA &>/dev/null
     check $?
   done
   
