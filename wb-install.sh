@@ -163,6 +163,14 @@ create_folder () {
   printf "%-80S" "Create wallpapers"
   cp -r ./wallpapers ~/
   check $?
+  
+}
+
+end_function () {
+
+  printf "%-80s" "Set permission full in $HOME"
+  chown 
+
 }
 
 clear
